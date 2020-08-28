@@ -1,6 +1,5 @@
 .App {
   text-align: center;
-  
 }
 
 .App-logo {
@@ -10,6 +9,21 @@
 
 .title {
   padding-top: 20px;
+}
+
+.board {
+  margin: 0 auto;
+  display:inline-block;
+}
+
+.world {
+  display: grid;
+  grid-template-columns: repeat(100, 10px);
+}
+
+.cell:hover {
+  background-color: black !important;
+  cursor: pointer;
 }
 
 
