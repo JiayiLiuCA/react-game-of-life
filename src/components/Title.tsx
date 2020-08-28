@@ -2,7 +2,7 @@ import React from 'react'
 import { Header, Divider } from 'semantic-ui-react'
 
 
-const Title: React.FC<{}> = () => {
+const Title: React.FC = () => {
     return (
         <div className="title">
             <Header as='h2' inverted>
