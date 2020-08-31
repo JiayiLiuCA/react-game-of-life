@@ -18,11 +18,11 @@
 
 .world {
   display: grid;
-  grid-template-columns: repeat(100, 10px);
+  grid-template-columns: repeat(50, 10px);
 }
 
 .cell:hover {
-  background-color: black !important;
+  background-color: #bcbcc1 !important; 
   cursor: pointer;
 }
 

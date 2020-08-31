@@ -12,8 +12,10 @@ const World:React.FC<{world: number[][]}> = ({ world }) => {
                 className="cell"
                 style= {{ backgroundColor: world[i][j] ? "#424151" : "#ffffff", 
                         border: "solid 1px rgba(0, 0, 0, 0.6)", 
+                        outline: "none",
                         width: "10px", 
-                        height: "10px"}}
+                        height: "10px"
+                    }}
             />
                 )
                 

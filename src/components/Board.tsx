@@ -2,8 +2,8 @@ import React, { useState } from 'react'
 import World from './World';
 
 
-const numRow:number = 100;
-const numCol:number = 100;
+const numRow:number = 50;
+const numCol:number = 50;
 
 
 const generateEmptyWorld = ():number[][] => {
@@ -15,8 +15,16 @@ const generateEmptyWorld = ():number[][] => {
     return emptyWorld;
 }
 
+const generateRandomWorld = ():number[][] => {
+    const emptyWorld = [];
+    for(let i = 0; i<numRow; i++) {
+        emptyWorld.push(Array.from(Array(numCol), () => Math.round(Math.random())))
+    }
+    return emptyWorld;
+}
+
 const Board:React.FC = () => {
-    const [world, setWorld] = useState(generateEmptyWorld());
+    const [world, setWorld] = useState(generateRandomWorld());
     //const [generation, setGeneration] = useState(0);
     //const [playing, setPlaying] = useState(false);
     //console.log(world);
