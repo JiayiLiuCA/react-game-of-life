@@ -24,7 +24,7 @@ const Control: React.FC<Prop> = ({ playing, onPlayClick, onRandomClick, onClearC
                 <Button
                     icon="redo"
                     onClick={() => onClearClick()}
-                />>
+                />
             </ButtonGroup>
         </div>
     )
