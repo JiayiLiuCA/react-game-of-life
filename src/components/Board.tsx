@@ -16,7 +16,6 @@ const generateEmptyWorld = (): number[][] => {
     return emptyWorld;
 }
 
-// Helper
 const generateRandomWorld = (): number[][] => {
     const emptyWorld = [];
     for (let i = 0; i < numRow; i++) {
@@ -24,6 +23,8 @@ const generateRandomWorld = (): number[][] => {
     }
     return emptyWorld;
 }
+
+// End Helper
 
 
 
@@ -34,18 +35,21 @@ const Board: React.FC = () => {
     //console.log(world);
 
     const onGridClick = (row:number, col:number):void => {
-        console.log(row,col);
+        console.log(row,col)
+        //let newWorld = world;
+        //newWorld[row][col] = 1;
+        //setWorld(newWorld);
     }
 
-    const onPlayClick = (): void => {
+    const onPlay = (): void => {
         setPlaying(!playing);
     }
 
-    const onRandomClick = (): void => {
+    const onRandom = (): void => {
         setWorld(() => generateRandomWorld());
     }
 
-    const onClearClick = (): void => {
+    const onClear = (): void => {
         setWorld(() => generateEmptyWorld());
     }
 
@@ -55,9 +59,9 @@ const Board: React.FC = () => {
             <World world={world} onGridClick={onGridClick}/>
             <Control
                 playing={playing}
-                onPlayClick={onPlayClick}
-                onRandomClick={onRandomClick} 
-                onClearClick={onClearClick}
+                onPlay={onPlay}
+                onRandom={onRandom} 
+                onClear={onClear}
             />
         </div>
     )
