@@ -8,12 +8,12 @@ interface Props {
 const World: React.FC<Props> = ({ world, onGridClick }) => {
     console.log(world);
     return (
-
+        // Render world
         <div className="world">
             {world.map((row: Array<number>, i: number) =>
                 row.map((col: number, j: number) =>
                     <div
-                        key={`${i}-${j}`}
+                        key={`${i}-${j}-${world[i][j]}`}
                         className="cell"
                         style={{
                             backgroundColor: world[i][j] ? "#424151" : "#ffffff",

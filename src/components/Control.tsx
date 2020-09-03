@@ -4,17 +4,22 @@ import { Button, ButtonGroup } from 'semantic-ui-react'
 interface Prop {
     playing: boolean;
     onPlay: () => void;
+    nextGen: ()=> void;
     onRandom: () => void;
     onClear: () => void;
 }
 
-const Control: React.FC<Prop> = ({ playing, onPlay, onRandom, onClear }) => {
+const Control: React.FC<Prop> = ({ playing, onPlay, nextGen, onRandom, onClear }) => {
     return (
         <div className="control">
             <ButtonGroup>
                 <Button
                     icon={playing ? "pause" : "play"}
                     onClick={() => onPlay()}
+                />
+                <Button
+                    icon="next"
+                    onClick={() => nextGen()}
                 />
                 <Button
                     icon="random"

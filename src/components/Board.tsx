@@ -7,6 +7,19 @@ const numRow: number = 50;
 const numCol: number = 50;
 
 // Helper
+
+const neighbors = [
+    [-1,-1],
+    [-1, 0],
+    [-1, 1],
+    [0, -1],
+    [0,  1],
+    [1, -1],
+    [1,  0],
+    [1,  1]
+]
+
+
 const generateEmptyWorld = (): number[][] => {
     console.log("gen")
     const emptyWorld = [];
@@ -32,17 +45,42 @@ const Board: React.FC = () => {
     const [world, setWorld] = useState(() => generateEmptyWorld());
     //const [generation, setGeneration] = useState(0);
     const [playing, setPlaying] = useState(false);
-    //console.log(world);
+    
 
     const onGridClick = (row:number, col:number):void => {
-        console.log(row,col)
-        //let newWorld = world;
-        //newWorld[row][col] = 1;
-        //setWorld(newWorld);
+        let newRow = [...world[row]];
+        newRow[col] = world[row][col] ? 0 : 1;
+        let newWorld = [...world];
+        newWorld[row] = newRow;
+        setWorld(newWorld);
+    }
+
+    const nextGen = ():void => {
+        let newWorld = [...world];
+        for(let i = 0; i<numRow; i++) {
+            for(let j = 0; j<numCol; j++) {
+                let countLiveNeighbors = 0
+                neighbors.forEach(([x,y]) => {
+                    const newX = x+i;
+                    const newY = y+j;
+                    if (newX >= 0 && newX < numRow && newY >= 0 && newY < numCol) {
+                        countLiveNeighbors += world[newX][newY];
+                    }
+                });
+                if (countLiveNeighbors < 2 || countLiveNeighbors > 3) {
+                    newWorld[i][j] = 0;
+                }
+                if (countLiveNeighbors === 3) {
+                    newWorld[i][j] = 1;
+                }
+            }
+        }
+        setWorld(newWorld);
     }
 
     const onPlay = (): void => {
         setPlaying(!playing);
+        
     }
 
     const onRandom = (): void => {
@@ -60,6 +98,7 @@ const Board: React.FC = () => {
             <Control
                 playing={playing}
                 onPlay={onPlay}
+                nextGen={nextGen}
                 onRandom={onRandom} 
                 onClear={onClear}
             />
