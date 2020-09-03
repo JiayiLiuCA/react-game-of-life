@@ -21,7 +21,7 @@ const neighbors = [
 
 
 const generateEmptyWorld = (): number[][] => {
-    console.log("gen")
+    //console.log("gen")
     const emptyWorld = [];
     for (let i = 0; i < numRow; i++) {
         emptyWorld.push(Array.from(Array(numCol), () => 0))
@@ -66,9 +66,7 @@ const Board: React.FC = () => {
                         countLiveNeighbors += world[newX][newY];
                     }
                 });
-                if (countLiveNeighbors !== 0) {
-                    console.log("row col : ", i, " ", j, " ", "neib : ", countLiveNeighbors)
-                }
+                
                 if (countLiveNeighbors < 2 || countLiveNeighbors > 3) {
                     newWorld[i][j] = 0;
                 }

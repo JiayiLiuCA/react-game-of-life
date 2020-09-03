@@ -18,7 +18,7 @@ const Control: React.FC<Prop> = ({ playing, onPlay, nextGen, onRandom, onClear }
                     onClick={() => onPlay()}
                 />
                 <Button
-                    icon="next"
+                    icon="arrow right"
                     onClick={() => nextGen()}
                 />
                 <Button
