@@ -4,10 +4,11 @@ import Board from './components/Board';
 import Title from './components/Title';
 
 
-function App() {
+const App: React.FC = () => {
+  console.log("app");
   return (
     <div className="App">
-      <Title/>
+      <Title />
       <Board />
     </div>
   );

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import World from './World';
 import Control from './Control';
+import World from './World'
 
 
 const numRow: number = 50;
@@ -21,7 +21,6 @@ const neighbors = [
 
 
 const generateEmptyWorld = (): number[][] => {
-    //console.log("gen")
     const emptyWorld = [];
     for (let i = 0; i < numRow; i++) {
         emptyWorld.push(Array.from(Array(numCol), () => 0))
@@ -42,6 +41,7 @@ const generateRandomWorld = (): number[][] => {
 
 
 const Board: React.FC = () => {
+    //console.log("Board")
     const [world, setWorld] = useState(() => generateEmptyWorld());
     //const [generation, setGeneration] = useState(0);
     const [playing, setPlaying] = useState(false);
@@ -83,7 +83,6 @@ const Board: React.FC = () => {
 
     const onPlay = (): void => {
         setPlaying(!playing);
-        //runSimulation();
         
     }
 

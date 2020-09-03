@@ -1,19 +1,17 @@
 import React from 'react'
 
 interface Props {
-    world: number [][];
+    world: number[][];
     onGridClick: (row:number,col:number) => void;
 }
 
-const World: React.FC<Props> = ({ world, onGridClick }) => {
-    //console.log(world);
+const World:React.FC<Props> = ({world, onGridClick}) => {
     return (
-        // Render world
         <div className="world">
             {world.map((row: Array<number>, i: number) =>
                 row.map((col: number, j: number) =>
                     <div
-                        key={`${i}-${j}-${world[i][j]}`}
+                        key={`${i}-${j}`}
                         className="cell"
                         style={{
                             backgroundColor: world[i][j] ? "#424151" : "#ffffff",
@@ -25,11 +23,10 @@ const World: React.FC<Props> = ({ world, onGridClick }) => {
                         onClick={() => onGridClick(i,j)}
                     />
                 )
-
-
             )}
         </div>
     )
 }
 
 export default World
+
