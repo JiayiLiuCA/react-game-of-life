@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useCallback } from 'react'
 import World from './World';
 import Control from './Control';
 
@@ -45,7 +45,6 @@ const Board: React.FC = () => {
     const [world, setWorld] = useState(() => generateEmptyWorld());
     //const [generation, setGeneration] = useState(0);
     const [playing, setPlaying] = useState(false);
-    
 
     const onGridClick = (row:number, col:number):void => {
         let newRow = [...world[row]];
@@ -56,7 +55,7 @@ const Board: React.FC = () => {
     }
 
     const nextGen = ():void => {
-        let newWorld = [...world];
+        let newWorld = generateEmptyWorld();
         for(let i = 0; i<numRow; i++) {
             for(let j = 0; j<numCol; j++) {
                 let countLiveNeighbors = 0
@@ -67,11 +66,17 @@ const Board: React.FC = () => {
                         countLiveNeighbors += world[newX][newY];
                     }
                 });
+                if (countLiveNeighbors !== 0) {
+                    console.log("row col : ", i, " ", j, " ", "neib : ", countLiveNeighbors)
+                }
                 if (countLiveNeighbors < 2 || countLiveNeighbors > 3) {
                     newWorld[i][j] = 0;
                 }
-                if (countLiveNeighbors === 3) {
+                else if (countLiveNeighbors === 3) {
                     newWorld[i][j] = 1;
+                }
+                else {
+                    newWorld[i][j] = world[i][j];
                 }
             }
         }
@@ -80,6 +85,7 @@ const Board: React.FC = () => {
 
     const onPlay = (): void => {
         setPlaying(!playing);
+        //runSimulation();
         
     }
 

@@ -6,7 +6,7 @@ interface Props {
 }
 
 const World: React.FC<Props> = ({ world, onGridClick }) => {
-    console.log(world);
+    //console.log(world);
     return (
         // Render world
         <div className="world">
