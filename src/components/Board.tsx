@@ -3,8 +3,8 @@ import Control from './Control';
 import World from './World'
 
 
-const numRow: number = 50;
-const numCol: number = 50;
+const numRow: number = 75;
+const numCol: number = 75;
 
 // Helper
 
@@ -41,7 +41,6 @@ const generateRandomWorld = (): number[][] => {
 
 
 const Board: React.FC = () => {
-    //console.log("Board")
     const [world, setWorld] = useState(() => generateEmptyWorld());
     const [generation, setGeneration] = useState(0);
     const [playing, setPlaying] = useState(false);
@@ -84,24 +83,25 @@ const Board: React.FC = () => {
         setWorld(newWorld);
     }, [world]);
 
+
+    // Next Generation
     useEffect(() => {
-        console.log("effect")
         if (!playing) {
             return;
         }
+        
         const interval = setInterval(() => {
             nextGen();
-            setGeneration(prevGen => prevGen + 1);
-        }, 10)
+            setGeneration(prevGen => prevGen+1);
+        }, 100)
         return () => {
             clearInterval(interval);
         }
-    }, [playing, generation, nextGen])
+    }, [playing, nextGen])
 
 
     const onPlay = (): void => {
         setPlaying(!playing);
-
     }
 
     const onRandom = (): void => {
@@ -114,9 +114,8 @@ const Board: React.FC = () => {
 
 
     return (
-        // board
         <div className="board">
-            <World world={world} onGridClick={onGridClick} />
+            <World world={world} onGridClick={onGridClick} generation={generation}/>
             <Control
                 playing={playing}
                 onPlay={onPlay}

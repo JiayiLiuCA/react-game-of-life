@@ -18,7 +18,7 @@
 
 .world {
   display: grid;
-  grid-template-columns: repeat(50, 10px);
+  grid-template-columns: repeat(75, 10px);
 }
 
 .cell:hover {
