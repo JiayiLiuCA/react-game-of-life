@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Control from './Control';
 import World from './World'
 
@@ -43,8 +43,23 @@ const generateRandomWorld = (): number[][] => {
 const Board: React.FC = () => {
     //console.log("Board")
     const [world, setWorld] = useState(() => generateEmptyWorld());
-    //const [generation, setGeneration] = useState(0);
+    const [generation, setGeneration] = useState(0);
     const [playing, setPlaying] = useState(false);
+
+    
+    useEffect(() => {
+        console.log("effect")
+        if (!playing) {
+            return;
+        }
+        const interval = setInterval(() => {
+            nextGen();
+            setGeneration(prevGen => prevGen+1);
+        }, 10)
+        return () => {
+            clearInterval(interval);
+        }
+    }, [playing,generation])
 
     const onGridClick = (row:number, col:number):void => {
         let newRow = [...world[row]];
@@ -96,6 +111,7 @@ const Board: React.FC = () => {
 
 
     return (
+        // board
         <div className="board">
             <World world={world} onGridClick={onGridClick}/>
             <Control

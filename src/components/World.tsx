@@ -1,12 +1,14 @@
 import React from 'react'
 
 interface Props {
-    world: number[][];
+    world: number [][];
     onGridClick: (row:number,col:number) => void;
 }
 
 const World:React.FC<Props> = ({world, onGridClick}) => {
+
     return (
+
         <div className="world">
             {world.map((row: Array<number>, i: number) =>
                 row.map((col: number, j: number) =>
