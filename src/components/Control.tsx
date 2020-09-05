@@ -13,13 +13,14 @@ const Control: React.FC<Prop> = ({ playing, onPlay, nextGen, onRandom, onClear }
     return (
         <div className="control">
             <ButtonGroup>
-                <Button
+                <Button 
                     icon={playing ? "pause" : "play"}
                     onClick={() => onPlay()}
                 />
-                <Button
+                <Button 
                     icon="arrow right"
                     onClick={() => nextGen()}
+                    disabled
                 />
                 <Button
                     icon="random"
