@@ -106,10 +106,14 @@ const Board: React.FC = () => {
 
     const onRandom = (): void => {
         setWorld(() => generateRandomWorld());
+        // Reset Generation
+        setGeneration(0);
     }
 
     const onClear = (): void => {
         setWorld(() => generateEmptyWorld());
+        // Reset Generation
+        setGeneration(0);
     }
 
 
