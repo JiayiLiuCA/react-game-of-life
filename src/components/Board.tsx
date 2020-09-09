@@ -99,7 +99,7 @@ const Board: React.FC = () => {
         }
     }, [playing, nextGen])
 
-
+    
     const onPlay = (): void => {
         setPlaying(!playing);
     }
@@ -115,13 +115,14 @@ const Board: React.FC = () => {
 
     return (
         <div className="board">
-            <World world={world} onGridClick={onGridClick} generation={generation}/>
+            <World world={world} onGridClick={onGridClick}/>
             <Control
                 playing={playing}
                 onPlay={onPlay}
                 nextGen={nextGen}
                 onRandom={onRandom}
                 onClear={onClear}
+                generation={generation}
             />
         </div>
     )

@@ -7,11 +7,13 @@ interface Prop {
     nextGen: ()=> void;
     onRandom: () => void;
     onClear: () => void;
+    generation: number;
 }
 
-const Control: React.FC<Prop> = ({ playing, onPlay, nextGen, onRandom, onClear }) => {
+const Control: React.FC<Prop> = ({ playing, onPlay, nextGen, onRandom, onClear, generation }) => {
     return (
         <div className="control">
+            <p style={{color: "white"}}>generation: {generation}</p>
             <ButtonGroup>
                 <Button 
                     icon={playing ? "pause" : "play"}
@@ -20,7 +22,6 @@ const Control: React.FC<Prop> = ({ playing, onPlay, nextGen, onRandom, onClear }
                 <Button 
                     icon="arrow right"
                     onClick={() => nextGen()}
-                    disabled
                 />
                 <Button
                     icon="random"

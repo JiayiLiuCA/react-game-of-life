@@ -3,10 +3,10 @@ import React from 'react'
 interface Props {
     world: number [][];
     onGridClick: (row:number,col:number) => void;
-    generation: number;
+
 }
 
-const World:React.FC<Props> = ({world, onGridClick, generation}) => {
+const World:React.FC<Props> = ({world, onGridClick}) => {
     return (
         <div className="world">
             {world.map((row: Array<number>, i: number) =>
@@ -25,7 +25,7 @@ const World:React.FC<Props> = ({world, onGridClick, generation}) => {
                     />
                 )
             )}
-            <p style={{ color: "#fff"}}> {`generation: ${generation}`}</p>
+            
         </div>
     )
 }
